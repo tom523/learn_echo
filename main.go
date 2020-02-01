@@ -1,8 +1,18 @@
 package learn_echo
 
-import "fmt" 
+import (
+   "fmt" 
+   "errors"
+)
 
 // Hi returns a friendly greeting
-func Hi(name string) string {
-   return fmt.Sprintf("Hi, %s!", name)
+func Hi(name string, lang string) (string, error) {
+   switch lang {
+     case "en":
+       return fmt.Sprintf("Hi, %s!", name), nil
+     case "cn":
+       return fmt.Sprintf("NiHao, %s!", name), nil
+     default:
+       return "", errors.New("unknown language")
+   }
 }
